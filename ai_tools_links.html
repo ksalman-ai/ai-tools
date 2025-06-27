@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AI Toolkit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .link-card:nth-child(2) { animation-delay: 0.2s; }
+        .link-card:nth-child(3) { animation-delay: 0.3s; }
+        .link-card:nth-child(4) { animation-delay: 0.4s; }
+        .link-card:nth-child(5) { animation-delay: 0.5s; }
+        .link-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .link-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+        }
+
+        .link-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-description {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            opacity: 0.7;
+            animation: fadeInUp 0.8s ease-out 0.7s both;
+        }
+
+        .add-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .add-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>My AI Toolkit</h1>
+            <p>Curated collection of powerful AI tools and platforms</p>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">💬 Conversational AI</h2>
+            <div class="links-grid">
+                <a href="https://openai.com" class="link-card" target="_blank">
+                    <div class="link-icon">🤖</div>
+                    <div class="link-title">OpenAI</div>
+                    <div class="link-description">ChatGPT, GPT-4, and cutting-edge language models for conversation and coding</div>
+                </a>
+
+                <a href="https://anthropic.com" class="link-card" target="_blank">
+                    <div class="link-icon">🧠</div>
+                    <div class="link-title">Anthropic</div>
+                    <div class="link-description">Claude AI - helpful, harmless, and honest AI assistant for complex tasks</div>
+                </a>
+
+                <a href="https://claude.ai" class="link-card" target="_blank">
+                    <div class="link-icon">💭</div>
+                    <div class="link-title">Claude (Direct)</div>
+                    <div class="link-description">Direct access to Claude AI for writing, analysis, and complex reasoning</div>
+                </a>
+
+                <a href="https://poe.com" class="link-card" target="_blank">
+                    <div class="link-icon">🌐</div>
+                    <div class="link-title">Poe</div>
+                    <div class="link-description">Access multiple AI models (GPT-4, Claude, etc.) in one unified platform</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">🛠️ Development & Coding</h2>
+            <div class="links-grid">
+                <a href="https://lovable.dev" class="link-card" target="_blank">
+                    <div class="link-icon">💖</div>
+                    <div class="link-title">Lovable</div>
+                    <div class="link-description">Build full-stack web apps with AI - from idea to deployment in minutes</div>
+                </a>
+
+                <a href="https://bolt.new" class="link-card" target="_blank">
+                    <div class="link-icon">⚡</div>
+                    <div class="link-title">Bolt.new</div>
+                    <div class="link-description">Instant web development environment with AI coding assistance</div>
+                </a>
+
+                <a href="https://replicate.com" class="link-card" target="_blank">
+                    <div class="link-icon">⚙️</div>
+                    <div class="link-title">Replicate</div>
+                    <div class="link-description">Run and deploy AI models in the cloud with simple API access</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">✨ Creative & Content</h2>
+            <div class="links-grid">
+                <a href="https://famous.ai" class="link-card" target="_blank">
+                    <div class="link-icon">🌟</div>
+                    <div class="link-title">Famous.ai</div>
+                    <div class="link-description">AI-powered creative platform for digital content and brand experiences</div>
+                </a>
+
+                <a href="https://manus.ai" class="link-card" target="_blank">
+                    <div class="link-icon">✍️</div>
+                    <div class="link-title">Manus.ai</div>
+                    <div class="link-description">Intelligent writing assistant and content creation tool</div>
+                </a>
+
+                <a href="https://midjourney.com" class="link-card" target="_blank">
+                    <div class="link-icon">🎨</div>
+                    <div class="link-title">Midjourney</div>
+                    <div class="link-description">Create stunning, photorealistic images from text prompts with incredible artistic quality</div>
+                </a>
+
+                <a href="https://runway.ml" class="link-card" target="_blank">
+                    <div class="link-icon">🎬</div>
+                    <div class="link-title">Runway</div>
+                    <div class="link-description">AI video editing and generation platform for creators and filmmakers</div>
+                </a>
+
+                <a href="https://elevenlabs.io" class="link-card" target="_blank">
+                    <div class="link-icon">🎙️</div>
+                    <div class="link-title">ElevenLabs</div>
+                    <div class="link-description">Generate ultra-realistic speech with AI voice cloning and text-to-speech</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">📊 Productivity & Search</h2>
+            <div class="links-grid">
+                <a href="https://perplexity.ai" class="link-card" target="_blank">
+                    <div class="link-icon">🔍</div>
+                    <div class="link-title">Perplexity</div>
+                    <div class="link-description">AI-powered search engine that provides accurate, real-time answers with sources</div>
+                </a>
+
+                <a href="https://gamma.app" class="link-card" target="_blank">
+                    <div class="link-icon">📊</div>
+                    <div class="link-title">Gamma</div>
+                    <div class="link-description">Create beautiful presentations, documents, and websites with AI in minutes</div>
+                </a>
+
+                <a href="https://notion.so" class="link-card" target="_blank">
+                    <div class="link-icon">📝</div>
+                    <div class="link-title">Notion AI</div>
+                    <div class="link-description">All-in-one workspace with AI writing, summarizing, and task automation</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">🤖 Specialized AI</h2>
+            <div class="links-grid">
+                <a href="https://janitor.ai" class="link-card" target="_blank">
+                    <div class="link-icon">🤖</div>
+                    <div class="link-title">Janitor AI</div>
+                    <div class="link-description">Create and chat with AI characters and chatbots for various purposes</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>✨ Powered by curiosity and caffeine</p>
+        </div>
+    </div>
+
+    <button class="add-button" onclick="addNewTool()" title="Add new tool">+</button>
+
+    <script>
+        function addNewTool() {
+            const name = prompt("Tool name:");
+            const url = prompt("Tool URL:");
+            const description = prompt("Tool description:");
+            
+            if (name && url && description) {
+                const grid = document.querySelector('.links-grid');
+                const newCard = document.createElement('a');
+                newCard.href = url;
+                newCard.className = 'link-card';
+                newCard.target = '_blank';
+                newCard.innerHTML = `
+                    <div class="link-icon">🔧</div>
+                    <div class="link-title">${name}</div>
+                    <div class="link-description">${description}</div>
+                `;
+                grid.appendChild(newCard);
+            }
+        }
+
+        // Add subtle parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.link-card');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 0.5;
+                card.style.transform = `translateX(${x * speed}px) translateY(${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
